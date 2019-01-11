@@ -6,6 +6,7 @@ describe('HeroesComponent', () => {
     let HEROS;
     let mockHeroService;
     beforeEach(() => {
+        // arrange
         HEROS = [
             { id: 1, name: 'dcsdv', strength: 55 },
             { id: 2, name: 'tyyy', strength: 22 },
@@ -20,7 +21,9 @@ describe('HeroesComponent', () => {
 
             mockHeroService.deleteHero.and.returnValue(of(true))
             component.heroes = HEROS;
+            // act
             component.delete(HEROS[2]);
+            // assert
             expect(component.heroes.length).toBe(2);
         })
 
@@ -28,6 +31,7 @@ describe('HeroesComponent', () => {
             mockHeroService.deleteHero.and.returnValue(of(true))
             component.heroes = HEROS;
             component.delete(HEROS[2]);
+            //assert
             expect(mockHeroService.deleteHero).toHaveBeenCalledWith(HEROS[2]);
         })
     })
